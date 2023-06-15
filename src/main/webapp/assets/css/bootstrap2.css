@@ -3651,7 +3651,7 @@ tbody.collapse.in {
 .btn-group > .btn,
 .btn-group-vertical > .btn {
   position: relative;
-  float: left;
+  float: right;
 }
 .btn-group > .btn:hover,
 .btn-group-vertical > .btn:hover,
@@ -3685,9 +3685,9 @@ tbody.collapse.in {
 .btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {
   border-radius: 0;
 }
-.btn-group > .btn:first-child {
-  margin-left: 0;
-}
+<!--.btn-group > .btn:first-child {
+  margin: 0 auto;
+}-->
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
