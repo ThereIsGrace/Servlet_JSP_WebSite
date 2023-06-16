@@ -14,6 +14,6 @@ public class MenTeeVO {
 	private String M_area;
 	private String M_phonum;
 	private String M_subject;
-	
+	//순수한 데이터 객체
 	
 }
