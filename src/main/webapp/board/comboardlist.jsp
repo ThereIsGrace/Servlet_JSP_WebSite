@@ -58,7 +58,7 @@ text-decoration:none;
 			<td style="background-color: #eeeeee; text-align: center;">작성일</td>
 		</tr>
 		<c:choose>
-			<c:when test="${empty articlesList}">
+			<c:when test="${empty cdList}">
 				<tr height="10">
 					<td colspan="4">
 						<p align="center">
@@ -67,17 +67,17 @@ text-decoration:none;
 					</td>
 				</tr>
 			</c:when>
-			<c:when test="${!empty articlesList}">
-				<c:forEach var="article" items="${articlesList}"
+			<c:when test="${!empty cdList}">
+				<c:forEach var="article" items="${cdList}"
 					varStatus="articleNum">
 					<tr align="center">
 						<td >${articleNum.count}</td>
-						<td >${article.id}</td>
+						<td >${article.comwriter_id}</td>
 						<td ><span
 							style="padding-right: 30px;"></span>
 									<a class="cls1"
-										href="${contextPath}/board/viewArticle.do?articleNO=${article.articleNO}">${article.title}</a>
-						<td width="10%"><fmt:formatDate value="${article.writeDate}" />
+										href="${contextPath}/board/viewArticle.do?articleNO=${article.comarticleno}">${article.comtitle}</a>
+						<td width="10%"><fmt:formatDate value="${article.comwriter_date}" />
 						</td>
 					</tr>
 				</c:forEach>
@@ -85,7 +85,7 @@ text-decoration:none;
 		</c:choose>
 	</table>
 	<div >
-		<c:if test="${totArticles!=null }">
+<%-- 		<c:if test="${totArticles!=null }">
 			<c:choose>
 				<c:when test="${totArticles>100 }">
 					<c:forEach var="page" begin="1" end="10" step="1">
@@ -119,8 +119,8 @@ text-decoration:none;
 					</c:forEach>
 				</c:when>
 			</c:choose>
-		</c:if>
-	</div>
+		</c:if> --%>
+	<!-- /div>  -->
  <c:if test="${usrid!=null}">
 	<div style="float:right;">
 	<a href="${contextPath}/board/articleForm.do">

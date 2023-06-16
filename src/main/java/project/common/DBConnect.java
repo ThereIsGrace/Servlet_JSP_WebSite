@@ -12,12 +12,14 @@ public class DBConnect {
 	static DataSource dataSource = null;  // 서버를 통해 커넥션 풀을 만들고 반환하는 객체 
 	static Connection conn = null;        // 데이터베이스와의 연결이 성공하면 반환
 	
+
 	public static Connection getConnection() {
 		try {
-			Context ctx = new InitialContext();
-			Context envContext = (Context) ctx.lookup("java:comp/env");
-			dataSource = (DataSource)envContext.lookup("jdbc/mariadb");
-			conn = dataSource.getConnection();
+			Context context = new InitialContext();
+
+			DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/mariaDB");
+
+			conn = ds.getConnection();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

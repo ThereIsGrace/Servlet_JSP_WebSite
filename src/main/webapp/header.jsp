@@ -25,7 +25,7 @@ request.setCharacterEncoding("utf-8");
           <li><a href="about.html">About</a></li>
           <li><a href="courses.html">강사찾기</a></li>
           <li><a href="trainers.html">캘린더</a></li>
-          <li><a href="${contextPath}/board/comboardlist.jsp">커뮤니티</a></li>
+          <li><a href="${contextPath}/bulletinread.do">커뮤니티</a></li>
           <li><a href="${contextPath}/board/reviweboard.jsp">리뷰</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

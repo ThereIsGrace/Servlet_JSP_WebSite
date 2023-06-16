@@ -5,7 +5,7 @@ import java.sql.Date;
 import lombok.Data;
 
 
-@Data
+
 public class CommunityVO {
 	private int comarticleno;
 	private String comtitle;
@@ -44,6 +44,5 @@ public class CommunityVO {
 		this.comwriter_date = comwriter_date;
 	}
 
-	
 
 }
