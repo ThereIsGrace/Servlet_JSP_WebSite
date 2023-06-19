@@ -14,7 +14,7 @@ import project.DAO.LoginDAO;
 
 
 @WebServlet("/findPwd")
-public class FindPwdHandler extends HttpServlet {
+public class FindMPwdHandler extends HttpServlet {
 	
 	protected void init(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("findmid 생성");
@@ -34,27 +34,17 @@ public class FindPwdHandler extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		LoginDAO loginDAO = LoginDAO.getInstance();
 		String nextPage= "";
-		String user = request.getParameter("user");
+		  
+		String id = request.getParameter("id");
+		String name = request.getParameter("name");
+		String phone = request.getParameter("phone");
+		String M_pwd=loginDAO.searchPwdM(id, name, phone);
+		System.out.println("값 받아옴");
+		System.out.println(id);
+		System.out.println(name);
+		request.setAttribute("M_pwd", M_pwd);
+		nextPage = "Login.jsp";
 		
-		if(user.equals("학생용")) {
-			String id = request.getParameter("id");
-			String name = request.getParameter("name");
-			String phone = request.getParameter("phone");
-			String M_pwd=loginDAO.searchPwdM(id, name, phone);
-			System.out.println("값 받아옴");
-			System.out.println(id);
-			System.out.println(name);
-			request.setAttribute("M_pwd", M_pwd);
-			nextPage = "Login.jsp";
-		}else if(user.equals("강사용")){
-			String id = request.getParameter("id");
-			String name = request.getParameter("name");
-			String phone = request.getParameter("phone");
-			String T_pwd=loginDAO.searchPwdT(id,name, phone);
-			System.out.println(T_pwd);
-			request.setAttribute("T_pwd", T_pwd);
-			nextPage = "Login.jsp";
-		}
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}	
