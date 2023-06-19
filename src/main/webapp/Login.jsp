@@ -42,7 +42,7 @@
 	}
 	
 	</script>
-	<body width="100px" height="800px">
+	<body><br><br><br><br><br>
 	
 	<c:choose>
 		<c:when test="${!empty error_message}">
