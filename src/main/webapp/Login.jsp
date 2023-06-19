@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var='contextPath' value="${pageContext.request.contextPath}" />
-<%@ include file="../header.jsp"%>
+<%@ include file="./header.jsp"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -14,11 +14,11 @@
 		 %>
 					
 	</head>
-	<link href="../assets/css/style.css" rel="stylesheet">
-	<link rel="stylesheet" href="../assets/css/bootstrap.css">
+	<link href="${contextPath}/assets/css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="${contextPath}/assets/css/bootstrap.css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-	<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet"> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
 	<script>
@@ -28,15 +28,22 @@
 	function pwdInfo() {
 		window.alert('비밀번호가 틀립니다. 다시 입력해 주세요')
 	}
-	function showId(){
+	function showM_Id(){
 		$('#idsection').append("아이디: ${M_id}");
 	}
-	function showPwd(){
+	function showM_Pwd(){
 		$('#pwdsection').append("비밀번호: ${M_pwd}");
+	}
+	function showT_Id(){
+		$('#idsection').append("아이디: ${T_id}");
+	}
+	function showT_Pwd(){
+		$('#pwdsection').append("비밀번호: ${T_pwd}");
 	}
 	
 	</script>
 	<body width="100px" height="800px">
+	
 	<c:choose>
 		<c:when test="${!empty error_message}">
 			<c:if test="${error_message == 'id_error'}">
@@ -56,7 +63,7 @@
 				<tr>
 					<td>아이디</td>
 					<td><input type="text" placeholder="ID" name="user_id" autofocus /></td>
-					<td rowspan="2"><input type="submit" value="로그인"  /></td>
+					<td rowspan="2"><input type="submit" value="로그인" class="btn btn-outline-success" /></td>
 				</tr>
 				<tr>
 					<td>비밀번호</td>
@@ -81,7 +88,14 @@
 				<c:when test="${!empty M_id}">
 					<div id="idsection" align="center">
 						<script>
-							showId();
+							showM_Id();
+						</script>
+					</div>
+				</c:when>
+				<c:when test="${!empty T_id}">
+					<div id="idsection" align="center">
+						<script>
+							showT_Id();
 						</script>
 					</div>
 				</c:when>
@@ -93,7 +107,14 @@
 				<c:when test="${!empty M_pwd}">
 					<div id="pwdsection" align="center">
 						<script>
-							showPwd();
+							showM_Pwd();
+						</script>
+					</div>
+				</c:when>
+				<c:when test="${!empty T_pwd}">
+					<div id="pwdsection" align="center">
+						<script>
+							showT_Pwd();
 						</script>
 					</div>
 				</c:when>
@@ -102,5 +123,4 @@
 				</c:otherwise>
 			</c:choose>
 		</form>
-	</body>
-</html>
+		<%@ include file="./footer.jsp"%>
