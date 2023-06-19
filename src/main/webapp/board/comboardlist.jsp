@@ -14,12 +14,12 @@ request.setCharacterEncoding("utf-8");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="../assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link href="${contextPath}/assets/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="${contextPath}/assets/css/bootstrap.css">
 <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="${contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="${contextPath}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 <style>
 a{
 text-decoration:none;
