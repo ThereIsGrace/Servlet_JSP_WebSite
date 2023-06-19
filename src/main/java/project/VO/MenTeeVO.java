@@ -1,5 +1,8 @@
 package project.VO;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import lombok.Data;
 
 @Data
@@ -12,6 +15,7 @@ public class MenTeeVO {
 	private String M_area;
 	private String M_phonum;
 	private String M_subject;
+	
 	public String getM_id() {
 		return M_id;
 	}
@@ -27,8 +31,14 @@ public class MenTeeVO {
 	public int getM_age() {
 		return M_age;
 	}
-	public void setM_age(int m_age) {
-		M_age = m_age;
+	public void setM_age(String m_age) {
+		Date da=new Date();
+		SimpleDateFormat si=new SimpleDateFormat("yyyy");
+		String userage=m_age.substring(0,4);
+		String guswo=si.format(da);
+		int user=Integer.parseInt(userage);
+		int guswotlrks=Integer.parseInt(guswo);
+		this.M_age=user-guswotlrks;
 	}
 	public String getM_name() {
 		return M_name;
