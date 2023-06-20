@@ -1,8 +1,5 @@
 package project.VO;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,15 +29,9 @@ public class TutorVO {
 	public int getT_age() {
 		return T_age;
 	}
-	public void setT_age(String t_age) {
-		Date da=new Date();
-		SimpleDateFormat si=new SimpleDateFormat("yyyy");
-		String userage=t_age.substring(0,4);
-		String guswo=si.format(da);
-		int user=Integer.parseInt(userage);
-		int guswotlrks=Integer.parseInt(guswo);
-		this.T_age=user-guswotlrks;
-;	}
+	public void setT_age(int t_age) {
+		T_age = t_age;
+	}
 	public String getT_name() {
 		return T_name;
 	}
