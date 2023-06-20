@@ -1,24 +1,10 @@
 package project.VO;
 
-import java.util.Date;
+import java.sql.Date;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-
-
-public class CommunityVO {
-	public CommunityVO() {
-	}
-	
-	public CommunityVO(int comarticleno, String comtitle, String comwriter_id, String comcontent, Date comwriter_date) {
-		this.comarticleno = comarticleno;
-		this.comtitle = comtitle;
-		this.comwriter_id = comwriter_id;
-		this.comcontent = comcontent;
-		this.comwriter_date = comwriter_date;
-	}
-
+public class CommunityVO extends PageVO{
 	private int comarticleno;
 	private String comtitle;
 	private String comwriter_id;
