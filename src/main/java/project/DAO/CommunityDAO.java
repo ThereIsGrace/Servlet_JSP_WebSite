@@ -22,7 +22,7 @@ public class CommunityDAO {
 	
 	public List<CommunityVO> readCommunity() {
 		List<CommunityVO> comList = new ArrayList<>();
-		String query = "select * from community";
+		String query = "select * from community order by articleNum desc";
 		try {
 			conn = DBConnect.getConnection();
 			pstmt = conn.prepareStatement(query);
@@ -30,7 +30,6 @@ public class CommunityDAO {
 			while(rs.next()) {
 				CommunityVO cv = new CommunityVO();
 				cv.setComarticleno(rs.getInt("comarticleNO"));
-				cv.setComcontent(rs.getString("comcontent"));
 				cv.setComtitle(rs.getString("comtitle"));
 				cv.setComwriter_date(rs.getDate("comwriter_date"));
 				cv.setComwriter_id(rs.getString("comwriter_id"));
