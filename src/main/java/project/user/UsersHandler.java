@@ -13,9 +13,7 @@ import project.DAO.MembershipDAO;
 import project.VO.MenTeeVO;
 import project.VO.TutorVO;
 
-/**
- * Servlet implementation class UsersHandler
- */
+
 @WebServlet("/UsersHandler.do")
 public class UsersHandler extends HttpServlet {
 
@@ -33,10 +31,11 @@ public class UsersHandler extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		if(request.getParameter("men").equals("tutor"))
+		if(request.getParameter("men").equals("tutor"))//멘토의 정보를 입력받음
 		{
-			TutorVO vo = new TutorVO();
-			vo.setT_id(request.getParameter("id"));
+			TutorVO vo = new TutorVO(); 
+			// 사용자가 입력한 정보를 가져와서 set으로 전달
+			vo.setT_id(request.getParameter("id")); 
 			vo.setT_pwd(request.getParameter("pw"));
 			vo.setT_age(request.getParameter("age"));
 			vo.setT_phonum(request.getParameter("phone"));
@@ -49,7 +48,7 @@ public class UsersHandler extends HttpServlet {
 			String nextPgae="./board/login.jsp";
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPgae);
 			dispatch.forward(request, response);
-		}else if(request.getParameter("men").equals("mentee"))
+		}else if(request.getParameter("men").equals("mentee")) //멘티의 정보를 입력받음
 		{
 			MenTeeVO vo = new MenTeeVO();
 			vo.setM_id(request.getParameter("id"));
@@ -65,12 +64,7 @@ public class UsersHandler extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher(nextPgae);
 			dispatch.forward(request, response);
 			
-		}//else if(!request.getParameter("id").equals(null)) {
-//			MembershipDAO dao = MembershipDAO.getInstance();
-//			String id=request.getParameter("id");
-//			int a=dao.insertId(id);
-//			request.setAttribute("iddao", a);
-//			
-		}
+		}			
+	}
 	
 }

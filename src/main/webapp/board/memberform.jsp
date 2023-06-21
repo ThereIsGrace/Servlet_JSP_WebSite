@@ -13,33 +13,7 @@
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-
-
-function isSame() {
-	var pw = document.getElementById('pw').value;
-    if (pw.length < 7|| pw.length > 60) {
-    	document.getElementById('abc').innerHTML='8자리 이상 입력해 주세요.';
-        document.getElementById('abc').style.color='red';
-    }else{
-    	document.getElementById('abc').innerHTML='';
-    }
-    if(document.getElementById('pw').value!=''&&document.getElementById('pwCheck').value !='') {
-    	if( document.getElementById('pw').value == document.getElementById('pwCheck').value ) {
-    		document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
-            document.getElementById('same').style.color='blue';
-        }
-        else {
-            document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
-            document.getElementById('same').style.color='red';
-        }
-    }
-}
-
-
-
-
-	
-	function sample6_execDaumPostcode() {
+	function sample6_execDaumPostcode() { //주소록 API
 		new daum.Postcode(
 				{
 					oncomplete : function(data) {
@@ -91,83 +65,69 @@ function isSame() {
 					}
 				}).open();
 	}
+	function isSame() { //비밀번호 재확인
+		var pw = document.getElementById('pw').value;
+	    if (pw.length < 7|| pw.length > 20) {
+	    	document.getElementById('pid').innerHTML='8자리 이상 입력해 주세요.';
+	        document.getElementById('pid').style.color='red';
+	    }else{
+	    	document.getElementById('pid').innerHTML='';
+	    }
+	    if(document.getElementById('pw').value!=''&&document.getElementById('pwCheck').value !='') {
+	    	if( document.getElementById('pw').value == document.getElementById('pwCheck').value ) {
+	    		document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
+	            document.getElementById('same').style.color='blue';
+	            document.getElementById('pwun').value = true;
+	        }
+	        else {
+	            document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
+	            document.getElementById('same').style.color='red';
+	            document.getElementById('pwun').value = false;
+	        }
+	    }
+	}
 </script>
-
 <script>
-
-
-function idsle(){
+function idsle(){ //아이디 중복 확인
     var result = document.getElementById("inputid").value; // result 변수에 아이디 필드 값을 가져옴
    console.log(result); // 콘솔에 아이디 띄워서 값이 들어오는지 확인
     var serverid = "${idall}"; // 서버에 저장되어 있는 아이디 값들
    console.log(serverid);
-    var chk = true; // 중복 유무 확인 변수
         // 중복 체크
         var idArray = serverid.split(","); // idall 문자열을 쉼표(,)를 기준으로 분리하여 배열로 저장
         for(var j = 0; j < idArray.length; j++) {
         	idArray[j] = idArray[j].trim();
         	console.log(idArray[j]); 	
+        	
             if(result === idArray[j]) {
                 document.getElementById('sleid').innerHTML = '중복된 아이디가 존재합니다.';
                 document.getElementById('sleid').style.color = 'red';
-   
+                document.getElementById('idun').value = false;
                 break; // 중복이 확인되었으므로 반복문을 종료합니다.
             }else{
                 document.getElementById('sleid').innerHTML = '사용 가능한 아이디입니다.';
                 document.getElementById('sleid').style.color = 'blue';
+                document.getElementById('idun').value = true;
+               
             }
         }
-    // 중복이 없는 경우
-/*     if(chk) {
-        document.getElementById('sleid').innerHTML = '사용 가능한 아이디입니다.';
-        document.getElementById('sleid').style.color = 'blue';
-    } */
 }
 
-// function idsle(){
-// 	var result=document.getElementById("inputid").value // result 변수에 아이디 필드 값을 가져옴
-// 	console.log(result); //콘솔에 아이디 띄워서 값이 들어오는지 확인
-
-// 	var test = "${idall}"; //서버에 저장되어있는 아이디 값들
-// 	console.log(test);
-	
-// 	var chk = true; //중복유무 확인 변수
-// 	var eetong = new Array();
-	
-// 	for(var i=0; i<arrValues.length; i++) {
-// 		chek = true; //중복유무 초기화	
-// 		//중복체크
-// 		// 값을 담을 
-// 		for (value in eetong) {
-// 			if (eetong[value]==test[i]) {
-// 				chk=false;
-// 				'중복된 아이디가 존재합니다.';
-// 			}
-// 		}
-// 		if(chk)
-// 			eetong.push(test[i]);
-// 		innerHTML='사용 가능한 아이디입니다.';
-// 	}
-	
-	
-	
-// 	var con=test.some(result) //result(입력된 아이디 값)가 서버에 저장된 아이디중에 존재하는지 확인 (includes가 ture, false 리턴함)
-
-// 	if(con){
-// 	      document.getElementById('sleid').innerHTML='중복된 아이디가 존재합니다.';
-//           document.getElementById('sleid').style.color='red';
-// 	}else if(!con){
-// 	      document.getElementById('sleid').innerHTML='사용가능 한 아이디입니다.';
-//         document.getElementById('sleid').style.color='blue';
-//	}
-//}
-
+</script>
+<script>
+	function unable() {
+		if(document.getElementById('idun').value&&document.getElementById('pwun').value){
+			document.getElementById('join').disabled = false;
+		}else{
+			document.getElementById('join').disabled = true;
+		}
+	}
 </script>
 <title>회원 가입창</title>
 <body>
 
 	<form method="post" action="${contextPath}/UsersHandler.do">
-		<h1 style="text-align: center">회원 가입창</h1>
+		<h1 style="text-align: center">회원 가입</h1>
 		<table align="center">
 			<tr>
 				<td width="200"><p align="right">가입유형</td>
@@ -177,22 +137,26 @@ function idsle(){
 			<tr>
 				<td width="200"><p align="right">아이디</td>
 				<td width="400"><input type="text" name="id" id="inputid"
-					placeholder="8자리 이상 입력해 주세요." onchange="idsle();"> <span
-					id="sleid"></span>
+					placeholder="8자리 이상 입력해 주세요." onchange="idsle(),unable()"> 
+					<span id="sleid"></span>
+					<span value = '123' id = "idun"></span>
+			
 			</tr>
 
 			<tr>
 				<td width="200"><p align="right">비밀번호</td>
 				<td><input type="password" name="pw"
 					placeholder="8자리 이상 입력해 주세요." id="pw" onchange="isSame()" /> <span
-					id="abc"></span></td>
+					id="pid"></span></td>
 			</tr>
 
 			<tr>
 				<td width="200"><p align="right">비밀번호 확인</td>
 				<td><input type="password" name="pw_chek"
-					placeholder="8자리 이상 입력해 주세요." id="pwCheck" onchange="isSame()" />&nbsp;&nbsp;
-					<span id="same"></span></td>
+					placeholder="8자리 이상 입력해 주세요." id="pwCheck" onchange="isSame(),unable()" />&nbsp;&nbsp;
+					<span id="same"></span>
+					<span value='123' id = "pwun"></span>	
+					</td>
 			</tr>
 
 			<tr>
@@ -240,7 +204,7 @@ function idsle(){
 			</tr>
 			<tr>
 				<td width="200"><p>&nbsp;</p></td>
-				<td width="400"><input type="submit" value="가입하기"> <input
+				<td width="400"><input type="submit" id= "join" value="가입하기" disabled> <input
 					type="reset" value="다시입력"></td>
 			</tr>
 		</table>
