@@ -1,3 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+request.setCharacterEncoding("utf-8");
+%>
+ <c:set var="user_id" value='<%=(String)session.getAttribute("user_id")%>' />
+ 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -53,7 +61,19 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-      <a href="courses.html" class="get-started-btn">로그인</a>
+      <input type="hidden" value="${user_id}">
+      <c:choose>
+      <c:when test="${user_id==null}">
+      	<a href="/Login.jsp" style="float:right;" class="get-started-btn">로그인</a>
+	 </c:when> 
+	   <c:otherwise>
+	   <form  action="${contextPath}/lo.do" method="post">
+	   	<input type="submit" style="float:right;" class="get-started-btn" value="로그아웃" name="logout">
+	  	</form>
+	   <!-- <input type="button" style="float:right;" class="get-started-btn" onclick="logout();" value="로그아웃"> -->
+	 </c:otherwise>
+	 </c:choose> 
+      
     </div>
   </header><!-- End Header -->
 
@@ -69,7 +89,6 @@
   <main id="main">
 
     <!-- ======= About Section ======= -->
-   
     <section class="our-courses" id="courses">
       <div class="container">
         <div class="row">
@@ -103,7 +122,6 @@
                 </div>
               </div>
             </div>
-            plpl
           </div>
         </div>
       </div>        

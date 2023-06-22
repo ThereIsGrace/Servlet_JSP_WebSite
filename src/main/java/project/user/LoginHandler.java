@@ -1,15 +1,14 @@
 package project.user;
 
 import java.io.IOException;
-import java.sql.Connection;
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import project.DAO.LoginDAO;
 
@@ -34,13 +33,18 @@ public class LoginHandler extends HttpServlet {
 		String id = request.getParameter("user_id");
 		String pwd = request.getParameter("user_password");
 		String user = request.getParameter("user");
+		HttpSession session = request.getSession();
+		
 		int result;
 		String nextPage="";
 		if(user.equals("학생용")) {
 			result = loginDAO.readMentee(id,pwd);
 			if(result == 1) {
+				
+				System.out.println(id);
 				request.setAttribute("user_id",id);
-				nextPage="/index.html";
+				session.setAttribute("user_id", id);
+				nextPage="/index.jsp";
 			}else if(result == 0) {
 				nextPage = "/Login.jsp";
 				request.setAttribute("error_message", "id_error");
@@ -52,7 +56,8 @@ public class LoginHandler extends HttpServlet {
 			result = loginDAO.readTutor(id,pwd);
 			if(result == 1) {
 				request.setAttribute("user_id",id);
-				nextPage="/index.html";
+				session.setAttribute("user_id", id);
+				nextPage="/index.jsp";
 			}else if(result == 0) {
 				nextPage = "/Login.jsp";
 				request.setAttribute("error_message", "id_error");
