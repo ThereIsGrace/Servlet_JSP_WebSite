@@ -5,11 +5,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="sleidall" value="${allid}" />
-
+<%@ include file="../header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
+</head>
+
 <meta charset="UTF-8">
+<style>
+</style>
+
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -125,68 +130,69 @@ function idsle(){ //아이디 중복 확인
 </script>
 <title>회원 가입창</title>
 <body>
-
+	<div style="height: 90px;"></div>
+		<main style='background-color: #e9ecef; height: 850px;'>
 	<form method="post" action="${contextPath}/UsersHandler.do">
+	<div style="height: 20px;"></div>
 		<h1 style="text-align: center">회원 가입</h1>
-		<table align="center">
+		<table class="shadow p-3 mb-5 bg-body-tertiary rounded" align="center" style= 'background-color:#f8f9fa; color: green; width: 450px; border-radius: 8px;'>
 			<tr>
-				<td width="200"><p align="right">가입유형</td>
+				<td width="200" ><p align="right" style="margin-top: 15px;">가입유형</td>
 				<td width="400"><input type="radio" name="men" value="tutor"><label>멘토</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="men" value="mentee"><label>멘티</label></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">아이디</td>
+				<td width="200"><p align="right" style="margin-top: 15px;">아이디</td>
 				<td width="400"><input type="text" name="id" id="inputid"
-					placeholder="8자리 이상 입력해 주세요." onchange="idsle(),unable()"> 
+					placeholder="8자 이상 입력" onchange="idsle(),unable()" class = "wrapper-box" > 
 					<span id="sleid"></span>
 					<span value = '123' id = "idun"></span>
-			
 			</tr>
 
 			<tr>
-				<td width="200"><p align="right">비밀번호</td>
+				<td width="200"><p align="right" style="margin-top: 15px;">비밀번호</td>
 				<td><input type="password" name="pw"
-					placeholder="8자리 이상 입력해 주세요." id="pw" onchange="isSame()" /> <span
+					placeholder="8자 이상 입력" id="pw" onchange="isSame()" /> <span
 					id="pid"></span></td>
 			</tr>
 
 			<tr>
-				<td width="200"><p align="right">비밀번호 확인</td>
+				<td width="200"><p align="right" style="margin-top: 15px;">비밀번호 확인</td>
 				<td><input type="password" name="pw_chek"
-					placeholder="8자리 이상 입력해 주세요." id="pwCheck" onchange="isSame(),unable()" />&nbsp;&nbsp;
+					placeholder="8자 이상 입력" id="pwCheck" onchange="isSame(),unable()" />&nbsp;&nbsp;
 					<span id="same"></span>
 					<span value='123' id = "pwun"></span>	
 					</td>
 			</tr>
 
 			<tr>
-				<td width="200"><p align="right">이름</td>
+				<td width="200"><p align="right" style="margin-top: 1px;">이름</td>
 				<td width="400"><p>
 						<input type="text" name="name" placeholder="성명"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">성별</td>
+				<td width="200"><p align="right" style="margin-top: 1px;">성별</td>
 				<td width="400"><p>
 						<input type="radio" name="gender" value="남자"><label>남자</label>
 						<input type="radio" name="gender" value="여자"><label>여자</label></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">생년월일</td>
+				<td width="200"><p align="right" style="margin-top: 1px;">생년월일</td>
 				<td width="400"><p>
 						<input type="date" name="age" placeholder="000218"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">전화번호</td>
+				<td width="200"><p align="right" style="margin-top: 1px;">전화번호</td>
 				<td width="400"><p>
 						<input type="text" name="phone" placeholder="010-1234-5678"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">대학교</td>
+				<td width="200"><p align="right" style="margin-top: 1px;">대학교</td>
 				<td width="400"><p>
 						<input type="text" name="uni" placeholder="OO대"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">주소</td>
+				<td width="200"><p align="right" style="margin-top: 15px;">주소</td>
 				<td width="400"><p>
 						<input type="text" id="sample6_postcode" placeholder="우편번호">
 						<input type="button" onclick="sample6_execDaumPostcode()"
@@ -196,7 +202,7 @@ function idsle(){ //아이디 중복 확인
 						<input type="text" id="sample6_extraAddress" placeholder="참고항목"></td>
 			</tr>
 			<tr>
-				<td width="200"><p align="right">과목</td>
+				<td width="200"><p align="right" style="margin-top: 1px;">과목</td>
 				<td width="400"><p>
 						<input type="radio" name="subject" value="국어"><label>국어</label>
 						<input type="radio" name="subject" value="영어"><label>영어</label>
@@ -204,10 +210,12 @@ function idsle(){ //아이디 중복 확인
 			</tr>
 			<tr>
 				<td width="200"><p>&nbsp;</p></td>
-				<td width="400"><input type="submit" id= "join" value="가입하기" disabled> <input
-					type="reset" value="다시입력"></td>
+				<td width="400"><input type="submit" id= "join" value="가입하기" disabled> 
+				<input type="reset" value="다시입력"></td>
 			</tr>
 		</table>
 	</form>
+	</main>
 </body>
+<%@ include file="../footer.jsp"%>
 </html>
