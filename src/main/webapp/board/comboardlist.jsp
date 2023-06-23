@@ -45,11 +45,18 @@ text-decoration:none;
 }
 </style>
 <body>
+<<<<<<< HEAD
 <br><br><br><br><br><br>
 <div id="boardlist" >
 	<jsp:include page="list.jsp"></jsp:include>
 </div>
  <c:if test="${user_id!=null}">
+=======
+<div id="boardlist" >
+	<jsp:include page="list.jsp"></jsp:include>
+</div>
+ <c:if test="${usrid!=null}">
+>>>>>>> master
 	<div style="float:right;">
 	<a href="/board/comwrite.jsp">
 		<button class="w-btn w-btn" style=" background-color: #77af9c;

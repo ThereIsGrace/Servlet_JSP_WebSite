@@ -55,7 +55,11 @@ request.setCharacterEncoding("utf-8");
 						<td width="40%"><span
 							style="padding-right: 30px;"></span>
 									<a class="cls1"
+<<<<<<< HEAD
 										href="${contextPath}/viewread.do?articleno=${article.comarticleno}">${article.comtitle}</a>
+=======
+										href="${contextPath}/board/viewArticle.do?articleNO=${article.comarticleno}">${article.comtitle}</a>
+>>>>>>> master
 						<td width="10%"><fmt:formatDate value="${article.comwriter_date}" />
 						</td>
 					</tr>

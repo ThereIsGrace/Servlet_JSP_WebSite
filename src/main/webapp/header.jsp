@@ -11,8 +11,11 @@ request.setCharacterEncoding("utf-8");
 <html lang="ko">
 <head>
 <link href="${contextPath}/assets/css/style.css" rel="stylesheet">
+<<<<<<< HEAD
 <link href="${contextPath}/assets/vendor/vendpor/boxicons/boxicons.min.css" rel="stylesheet">
  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+=======
+>>>>>>> master
 <meta charset="UTF-8">
 <title>강좌인</title>
 </head>

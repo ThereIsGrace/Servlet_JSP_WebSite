@@ -16,8 +16,13 @@
 			String error_message = request.getParameter("error_message");
 			String M_id = request.getParameter("M_id");
 			String M_pwd = request.getParameter("M_pwd");
+<<<<<<< HEAD
 		 	String T_id = request.getParameter("T_id");
 			String T_pwd = request.getParameter("T_pwd");
+=======
+		/* 	String T_id = request.getParameter("T_id");
+			String T_pwd = request.getParameter("T_pwd"); */
+>>>>>>> master
 			
 		 %>
 					
@@ -85,7 +90,11 @@
 			                </select>
 			            </td>
 						<td colspan="2" style='margin: 0,auto'>
+<<<<<<< HEAD
 			                <input type="button" value="회원가입" class="btn btn-outline-success" onclick="location.href='${contextPath }/IdHandler.do'" />
+=======
+			                <input type="button" value="회원가입" class="btn btn-outline-success" onclick="location.href=''" />
+>>>>>>> master
 			                <input type="button" value="id찾기" onclick="location.href='searchId.jsp'" class="btn btn-outline-success" />
 			                <input type="button" value="비밀번호 찾기" onclick="location.href='searchPwd.jsp?user_id=${user_id}'" class="btn btn-outline-success" />
 			            </td>

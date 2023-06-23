@@ -28,7 +28,11 @@ public class UserLogoutHandler extends HttpServlet {
 		
 		
 		request.getSession().invalidate(); // 세션 삭제
+<<<<<<< HEAD
 		RequestDispatcher dispatch = request.getRequestDispatcher("/index.jsp");
+=======
+		RequestDispatcher dispatch = request.getRequestDispatcher("/index.html");
+>>>>>>> master
 		dispatch.forward(request, response);
 		
 	}

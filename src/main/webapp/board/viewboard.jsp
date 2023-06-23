@@ -32,8 +32,12 @@ request.setCharacterEncoding("utf-8");
 				</thead>
 				<tbody>
 					<tr>
+<<<<<<< HEAD
 					<td>작성자 아이디:${view.comwriter_id}
 					<input name="userid" type="hidden" value="${user_id}" /></td>
+=======
+					<td>작성자 아이디:${view.comwriter_id}</td>
+>>>>>>> master
 					</tr>
 					<tr>
 						<td><input  id="i_title" type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50" value="${view.comtitle}"  disabled></td>
@@ -44,8 +48,12 @@ request.setCharacterEncoding("utf-8");
 						 </textarea></td>						
 					</tr>
 					<tr>
+<<<<<<< HEAD
 					<td> 작성날짜${view.comwriter_date}
 					 <input name="articleno" type="hidden" value="${view.comarticleno}"></td>
+=======
+					<td> 작성날짜${view.comwriter_date} <input name="articleno" type="hidden" value="${view.comarticleno}"></td>
+>>>>>>> master
 					</tr>
 			</tbody>
 			<tr id="tr_btn_modify">
@@ -98,7 +106,11 @@ request.setCharacterEncoding("utf-8");
 		 form.setAttribute("action", "${contextPath}/bulletinDelete.do");
 	 	 var articleNOInput = document.createElement("input");
 	  	 articleNOInput.setAttribute("type","hidden");
+<<<<<<< HEAD
 	  	 articleNOInput.setAttribute("name","articleno");
+=======
+	  	 articleNOInput.setAttribute("name","articleNO");
+>>>>>>> master
 	   	 articleNOInput.setAttribute("value", articleNO);
 	  	 form.appendChild(articleNOInput);
 		//아 위에서 만든 create를 만들어둔거를 닫아주는명령어인거같음
