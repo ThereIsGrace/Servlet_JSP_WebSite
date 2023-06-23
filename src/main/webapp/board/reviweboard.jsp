@@ -14,12 +14,6 @@ request.setCharacterEncoding("utf-8");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link href="../assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/bootstrap.css">
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 <style>
 a{
 text-decoration:none;
@@ -60,36 +54,37 @@ text-decoration:none;
 </style>
 <body>
 <br><br><br><br><br><br>
-	<table>
+	<table >
 		<tr>
-			<td >글번호</td>
-			<td >작성자</td>
-			<td >내용</td>
-			<td >리뷰점수</td>
-			<td >리뷰날짜</td>
-			<td>선생님</td>
+			<td style="width:8%" >글번호</td>
+			<td style="width:8%" >작성자</td>
+			<td style="width:20%; text-align: center;">내용</td>
+			<td style="width:10%">리뷰점수</td>
+			<td style="width:8%">선생님</td>
+			<td style="width:8%">과목</td>
+			<td style="width:10%" >리뷰날짜</td>
 		</tr>
 		<c:choose>
-			<c:when test="${empty articlesList}">
+			<c:when test="${empty review}">
 				<tr >
-					<td colspan="6">
+					<td colspan="7">
 						<p align="center">
 							<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
 						</p>
 					</td>
 				</tr>
 			</c:when>
-			<c:when test="${!empty articlesList}">
-				<c:forEach var="article" items="${articlesList}"
+			<c:when test="${!empty review}">
+				<c:forEach var="re" items="${review}"
 					varStatus="articleNum">
-					<tr align="center">
-						<td >리뷰의 넘버</td>
-						<td >리뷰한아이디</td>
-						<td>리뷰 내용</td>
-						<td >리뷰점수 </td>
-						<td width="10%"><fmt:formatDate value="리뷰날짜" />
-						<td>리뷰한 선생님</td>
-						</td>
+					<tr >
+						<td style="width:8%">${articleNum.count}</td>
+						<td style="width:8%">${re.writer_id}</td>
+						<td style="width:20%;text-align: center; ">${re.content}</td>
+						<td style="width:10%" >5/${re.grade}</td>
+						<td style="width:8%">${re.t_name}</td>
+						<td style="width:8%">${re.subject} </td>
+						<td width="10%">${re.writer_date} </td>
 					</tr>
 				</c:forEach>
 			</c:when>
