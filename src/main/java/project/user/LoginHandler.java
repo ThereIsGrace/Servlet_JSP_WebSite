@@ -37,22 +37,22 @@ public class LoginHandler extends HttpServlet {
 		
 		int result;
 		String nextPage="";
-		if(user.equals("학생용")) {
-			result = loginDAO.readMentee(id,pwd);
+		if(user.equals("학생용")) { // 학생용으로 로그인 했을 시
+			result = loginDAO.readMentee(id,pwd); // LoginDAO에서 result값을 가져와서 비교
 			if(result == 1) {
 				
 				System.out.println(id);
 				request.setAttribute("user_id",id);
 				session.setAttribute("user_id", id);
 				nextPage="/index.jsp";
-			}else if(result == 0) {
+			}else if(result == 0) { // 입력이 안되었을 때 메세지 알림
 				nextPage = "/Login.jsp";
 				request.setAttribute("error_message", "id_error");
 			}else {
 				nextPage = "/Login.jsp";
 				request.setAttribute("error_message", "pwd_error");
 			}
-		}else if(user.equals("강사용")) {
+		}else if(user.equals("강사용")) { // 강사용으로 로그인 했을 시
 			result = loginDAO.readTutor(id,pwd);
 			if(result == 1) {
 				request.setAttribute("user_id",id);

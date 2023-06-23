@@ -18,7 +18,7 @@
 	<form action="findId" method="post" name="search">
 		<div style='height: 250px;'></div>
 		<div style='height: 30px;'></div>
-			<h1 align="center" class="logo me-auto" style='color: green'>강좌人</h1>
+			<h1 align="center" class="logo me-auto" ><a href="index.jsp" style='color: green'>강좌人</a></h1>
 		<div style='height: 30px;'></div>
 		<table align="center"  class="shadow p-3 mb-5 bg-body-tertiary rounded" align="center" style= 'background-color:#f8f9fa; color: green; width: 350px; border-radius: 8px;'>
 			<tr>

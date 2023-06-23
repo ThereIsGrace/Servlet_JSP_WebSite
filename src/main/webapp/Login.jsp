@@ -1,9 +1,12 @@
 <%@page import="project.VO.MenTeeVO"%>
 <%@page import="project.DAO.LoginDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var='contextPath' value="${pageContext.request.contextPath}" />
 <%@ include file="./header.jsp"%>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,12 +16,13 @@
 			String error_message = request.getParameter("error_message");
 			String M_id = request.getParameter("M_id");
 			String M_pwd = request.getParameter("M_pwd");
-			String T_id = request.getParameter("T_id");
-			String T_pwd = request.getParameter("T_pwd");
+		/* 	String T_id = request.getParameter("T_id");
+			String T_pwd = request.getParameter("T_pwd"); */
 			
 		 %>
 					
 	</head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
 	function idInfo(){
 		window.alert('아이디가 틀립니다. 다시 입력해 주세요');
@@ -37,7 +41,7 @@
 	}
 	function showT_Pwd(){
 		$('#pwdsection').append("찾은 비밀번호: ${T_pwd}");
-	}
+	} 
 	
 	</script>
 	<body>
@@ -60,7 +64,7 @@
 			<form action="login.do" method="post" name="frm">
 				
 				<div style='height: 30px;'></div>
-					<h1 align="center" class="logo me-auto" style='color: green'>강좌人</h1>
+					<h1 align="center" class="logo me-auto" ><a href="index.jsp" style='color: green'>강좌人</a></h1>
 				<div style='height: 30px;'></div>
 				<table class="shadow p-3 mb-5 bg-body-tertiary rounded" align="center" style= 'background-color:#f8f9fa; color: green; width: 450px; border-radius: 8px;'>
 					<tr>
