@@ -60,7 +60,9 @@ text-decoration:none;
 				</thead>
 				<tbody>
 					<tr>
-						<td><input type="text" name="userId"></td>
+						<td><input type="text" value="${user_id}" disabled>
+						<input name="userid" type="hidden" value="${user_id}">
+						</td>
 					</tr>
 					<tr>
 						<td><input type="text" class="form-control" placeholder="글 제목" name="title" maxlength="50"></td>

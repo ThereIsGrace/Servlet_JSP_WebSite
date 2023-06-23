@@ -33,7 +33,7 @@ public class BulletinWriteHandler extends HttpServlet {
 		cd = CommunityDAO.getInstance();
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
-		String userId = request.getParameter("userId");
+		String userId = request.getParameter("userid");
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 		System.out.println(userId);
@@ -43,7 +43,7 @@ public class BulletinWriteHandler extends HttpServlet {
 		cv.setComcontent(content);
 		cv.setComtitle(title);
 		cd.insertCommunity(cv);
-		String nextPage = "/bulletinread.do";
+		String nextPage = "/list.do";
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}

@@ -7,19 +7,15 @@
 request.setCharacterEncoding("utf-8");
 %>
 
+
 <%@ include file="../header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
-<link href="${contextPath}/assets/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="${contextPath}/assets/css/bootstrap.css">
-<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-<link href="${contextPath}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="${contextPath}/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
 <style>
 a{
 text-decoration:none;
@@ -50,80 +46,12 @@ text-decoration:none;
 </style>
 <body>
 <br><br><br><br><br><br>
-	<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd;  width: 70%; margin:auto">
-		<tr>
-			<td style="background-color: #eeeeee; text-align: center;">글번호</td>
-			<td style="background-color: #eeeeee; text-align: center;">작성자</td>
-			<td style="background-color: #eeeeee; text-align: center;">제목</td>
-			<td style="background-color: #eeeeee; text-align: center;">작성일</td>
-		</tr>
-		<c:choose>
-			<c:when test="${empty cdList}">
-				<tr height="10">
-					<td colspan="4">
-						<p align="center">
-							<b><span style="font-size: 9pt;">등록된 글이 없습니다.</span></b>
-						</p>
-					</td>
-				</tr>
-			</c:when>
-			<c:when test="${!empty cdList}">
-				<c:forEach var="article" items="${cdList}"
-					varStatus="articleNum">
-					<tr align="center">
-						<td >${articleNum.count}</td>
-						<td >${article.comwriter_id}</td>
-						<td ><span
-							style="padding-right: 30px;"></span>
-									<a class="cls1"
-										href="${contextPath}/board/viewArticle.do?articleNO=${article.comarticleno}">${article.comtitle}</a>
-						<td width="10%"><fmt:formatDate value="${article.comwriter_date}" />
-						</td>
-					</tr>
-				</c:forEach>
-			</c:when>
-		</c:choose>
-	</table>
-	<div >
-<%-- 		<c:if test="${totArticles!=null }">
-			<c:choose>
-				<c:when test="${totArticles>100 }">
-					<c:forEach var="page" begin="1" end="10" step="1">
-						<c:if test="${section>1&&page==1 }">
-							<a class='no-uline'
-								href="${contextPath}/board/listArticles.do?section=${section-1}&pageNum=${(section-1)*10+1}">&nbsp;pre</a>
-						</c:if>
-						<c:if test="${page==10}">
-							<a class='no-uline'
-								href="${contextPath}/board/listArticles.do?section=${section+1}&pageNum=${section*10+1}">&nbsp;next</a>
-						</c:if>
-					</c:forEach>
-				</c:when>
-				<c:when test="${totArticles==100 }">
-					<c:forEach var="page" begin="1" end="10" step="1">
-						<a class="no-uline" href="#">${page}</a>
-					</c:forEach>
-				</c:when>
-				<c:when test="${totArticles<100 }">
-					<c:forEach var="page" begin="1" end="${totArticles/10+1}" step="1">
-						<c:choose>
-							<c:when test="${page==pageNum}">
-								<a class="sel-page"
-									href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
-							</c:when>
-							<c:otherwise>
-								<a class="no-uline"
-									href="${contextPath}/board/listArticles.do?section=${section}&pageNum=${page}">${page}</a>
-							</c:otherwise>
-						</c:choose>
-					</c:forEach>
-				</c:when>
-			</c:choose>
-		</c:if> --%>
-	<!-- /div>  -->
- <c:if test="${usrid!=null}">
+<div id="boardlist" >
+	<jsp:include page="list.jsp"></jsp:include>
+</div>
+ <c:if test="${user_id!=null}">
 	<div style="float:right;">
-	<a href="${contextPath}/board/articleForm.do">
+	<a href="/board/comwrite.jsp">
 		<button class="w-btn w-btn" style=" background-color: #77af9c;
     color: #d7fff1;" type="button">
         글쓰기
@@ -131,6 +59,97 @@ text-decoration:none;
 	</a>
 	</div>
  </c:if> 
-  <script src="../vendor/jquery/jquery.min.js"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	
+	
+	
+<!-- 	
+	$(function(){
+		
+		$('.paging').click(function(){
+		$.ajax({
+			url:"/bulletinwrite.do", // servlet
+			type: "post",
+			datatype:"json",
+			data:JSON.stringify(submitObj),
+			success:function(data){
+
+		    var  result = new Array;
+		    result = data.resultList;
+		    var searchVO = data.searchVO;
+		    var realEnd = searchVO.realEnd;
+		    var startData = searchVO.startData;
+		    var startButtonData = startData - 1;
+		    var endData = searchVO.endData;
+		    var endButtonData = endData + 1;
+		    var pageIndex = searchVO.pageIndex;
+		    var resultCnt = data.resultCnt;
+		    var totalPageCnt = data.totalPageCnt;
+		    var recordCountPerPage = searchVO.recordCountPerPage;
+		    
+		    
+		    var ii = (resultCnt - (pageIndex - 1) * recordCountPerPage);
+		    
+		    var content = '';
+		    var content2 = '';
+		    
+		    $.each(result, function(key, value) {
+		        
+		        content +=    '<tr class="memList">';
+		        content +=    '<td class="t_c">' + ii + '</td>';
+		        content +=    '<td class="t_c">' + result.comwriter_id + '</td>';
+		        content +=    '<td class="t_c">' + result.comtitle + '</td>';
+		        content +=    '<td class="t_c">' + result.comwriter_date  +'</td>';
+		        content +=    '</tr>';
+		         ii--;
+		      });
+
+		    
+		    $(".listData").html(content);    
+		    
+		    content2 = '<input type="hidden" id="pageIndex" name="pageIndex" value="1">';
+		    content2 +=    '<ol class="pagination" id="pagination">';
+		    
+		    if(searchVO.prev){
+		        content2 +=    '<li class="prev_end"><a href="javascript:void(0);" onclick="fn_go_page(1); return false;" ></a></li>';    
+		        content2 +=    '<li class="prev"><a href="javascript:void(0);"  onclick="fn_go_page(' + startButtonData + '); return false;" ></a></li>';    
+		    }
+		    
+		    for (var num=startData; num<=endData; num++) {
+		         if (num == pageIndex) {
+		             content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '"  class="num on">' + num + '</a></li>';
+		         } else {
+		             content2 +=    '<li><a href="javascript:void(0);" onclick="fn_go_page(' + num + '); return false;" title="' + num + '" class="num">' + num + '</a></li>';
+		         }
+		    }
+		    
+		    if(searchVO.next){
+		        content2 +=    '<li class="next"><a href="javascript:void(0);"  onclick="fn_go_page(' + endButtonData + '); return false;" ></a></li>';    
+		        content2 +=    '<li class="next_end"><a href="javascript:void(0);" onclick="fn_go_page(' + searchVO.realEnd +'); return false;"></a></li>';    
+		    }
+		    
+		    content2 +=    '</ol>';
+		    content2 +=    '</div>';
+		 
+		    $(".pagination").html(content2);
+		    
+		 }) 
+		 .fail(function(e) {  
+		     alert("검색에 실패하였습니다.");
+		 }) 
+		 .always(function() { 
+		     
+		 }); 
+		}
+		
+	})
+		
+	}); -->
+
+
+	
+	
+	</script>
 	
 	<%@ include file="../footer.jsp"%>

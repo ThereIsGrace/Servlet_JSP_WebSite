@@ -1,8 +1,6 @@
 package project.bulletin;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,9 +15,11 @@ import project.VO.CommunityVO;
 /**
  * Servlet implementation class BulletinReadHandler
  */
-@WebServlet("/bulletinread.do")
+@WebServlet("/viewread.do")
 public class BulletinReadHandler extends HttpServlet {
+	
 	CommunityDAO cd;
+	CommunityVO vo;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
@@ -30,12 +30,14 @@ public class BulletinReadHandler extends HttpServlet {
 	}
 	
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		cd = CommunityDAO.getInstance();
-		searchVO
-		Map<String, CommunityVO> map = new HashMap<String, CommunityVO>();
-		List<CommunityVO> communityList = cd.readCommunity(null)
-		map.put("communityList", )
-		String nextPage = "/board/comboardlist.jsp";
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		int number=Integer.parseInt(request.getParameter("articleno"));
+		cd=CommunityDAO.getInstance();
+		vo=new CommunityVO();
+		vo=cd.viewCommunity(number);
+		request.setAttribute("view", vo);
+		String nextPage = "/board/viewboard.jsp";
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}

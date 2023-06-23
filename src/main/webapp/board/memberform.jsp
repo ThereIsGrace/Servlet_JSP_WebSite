@@ -72,30 +72,32 @@
 	}
 	function isSame() { //비밀번호 재확인
 		var pw = document.getElementById('pw').value;
-	    if (pw.length < 7|| pw.length > 20) {
+	    if (pw.length< 7) {
 	    	document.getElementById('pid').innerHTML='8자리 이상 입력해 주세요.';
 	        document.getElementById('pid').style.color='red';
 	    }else{
-	    	document.getElementById('pid').innerHTML='';
-	    }
-	    if(document.getElementById('pw').value!=''&&document.getElementById('pwCheck').value !='') {
-	    	if( document.getElementById('pw').value == document.getElementById('pwCheck').value ) {
-	    		document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
-	            document.getElementById('same').style.color='blue';
-	            document.getElementById('pwun').value = true;
-	        }
-	        else {
-	            document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
-	            document.getElementById('same').style.color='red';
-	            document.getElementById('pwun').value = false;
-	        }
+	    	document.getElementById('pid').innerHTML='올바른 비밀번호입니다';
+	        document.getElementById('pid').style.color='blue';
+	    	if(document.getElementById('pw').value!=''&&document.getElementById('pwCheck').value !='') {
+		    	if( document.getElementById('pw').value == document.getElementById('pwCheck').value ) {
+		    		document.getElementById('same').innerHTML='비밀번호가 일치합니다.';
+		            document.getElementById('same').style.color='blue';
+		            document.getElementById('pwun').value = true;
+		        }
+		        else {
+		            document.getElementById('same').innerHTML='비밀번호가 일치하지 않습니다.';
+		            document.getElementById('same').style.color='red';
+		            document.getElementById('pwun').value = false;
+		        }
+		    }
 	    }
 	}
 </script>
 <script>
 function idsle(){ //아이디 중복 확인
     var result = document.getElementById("inputid").value; // result 변수에 아이디 필드 값을 가져옴
-   console.log(result); // 콘솔에 아이디 띄워서 값이 들어오는지 확인
+    if(result.length> 7 ){
+  	console.log(result); // 콘솔에 아이디 띄워서 값이 들어오는지 확인
     var serverid = "${idall}"; // 서버에 저장되어 있는 아이디 값들
    console.log(serverid);
         // 중복 체크
@@ -113,9 +115,13 @@ function idsle(){ //아이디 중복 확인
                 document.getElementById('sleid').innerHTML = '사용 가능한 아이디입니다.';
                 document.getElementById('sleid').style.color = 'blue';
                 document.getElementById('idun').value = true;
-               
             }
         }
+    }else{
+    	
+    	document.getElementById('sleid').innerHTML = '8자리 이상 입력해주세요';
+    	document.getElementById('sleid').style.color = 'red';
+    }
 }
 
 </script>

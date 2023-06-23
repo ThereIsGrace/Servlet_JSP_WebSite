@@ -19,33 +19,38 @@
 		 %>
 <script type="text/javascript"></script>
 </head>
-<body><br><br><br><br><br><br>
+<main style='background-color: #e9ecef; height: 800px;'>
 	<form action="findPwd" method="post" name="search">
-		<table align="center" border=1>
+		<div style='height: 200px;'></div>
+		<div style='height: 30px;'></div>
+			<h1 align="center" class="logo me-auto" ><a href="index.jsp" style='color: green'>강좌人</a></h1>
+		<div style='height: 30px;'></div>
+		<table align="center" class="shadow p-3 mb-5 bg-body-tertiary rounded" align="center" style= 'background-color:#f8f9fa; color: green; width: 350px; border-radius: 8px;'>
 			<tr>
-				<td>아이디</td>
+				<td height=80px align="center">아이디</td>
 				<td><input type="text" name="id" value="${id}" autofocus /></td>
 			</tr>
 			<tr>
-				<td>이름</td>
+				<td height=80px align="center">이름</td>
 				<td><input type="text" name="name" /></td>
 			</tr>
 			<tr>
-				<td>전화번호</td>
+				<td height=80px align="center">전화번호</td>
 				<td><input type="text" name="phone" /></td>
 			</tr>
 			<tr>
-				<td>
+				<td height=60px align="center">
 					<select id="user_level" name="user">
 				       <option value="학생용" >학생용</option>
 				       <option value="강사용" >강사용</option>
 				    </select>
 			    </td>
-				<td colspan="2" align="center">
-				<input type="submit" value="찾기" />
-				<input type="reset" value="취소" onClick="location.href='Login.jsp'"/>
+				<td colspan="2" >
+				<input type="submit" value="찾기" class="btn btn-outline-success" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" value="취소" class="btn btn-outline-success" onClick="location.href='Login.jsp'"/>
 				</td>
 			</tr>
 		</table>
 	</form>
+</main>
 <%@ include file="./footer.jsp"%>
