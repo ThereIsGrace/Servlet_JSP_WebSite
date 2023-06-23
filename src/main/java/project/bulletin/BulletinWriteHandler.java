@@ -43,7 +43,7 @@ public class BulletinWriteHandler extends HttpServlet {
 		cv.setComcontent(content);
 		cv.setComtitle(title);
 		cd.insertCommunity(cv);
-		String nextPage = "/bulletinread.do";
+		String nextPage = "/list.do";
 		RequestDispatcher dispatch = request.getRequestDispatcher(nextPage);
 		dispatch.forward(request, response);
 	}
