@@ -27,7 +27,7 @@ public class UserLogoutHandler extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		
-		request.getSession().invalidate();
+		request.getSession().invalidate(); // 세션 삭제
 		RequestDispatcher dispatch = request.getRequestDispatcher("/index.html");
 		dispatch.forward(request, response);
 		
