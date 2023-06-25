@@ -25,4 +25,5 @@ JSP와 Servlet을 이용해서 만든 과외 웹사이트입니다.
 <H3>클래스 다이어그램</H3>
 <img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/f092dd50-c157-42be-b071-f00d80e0cc32">
 <H3>ERD</H3>
-<img src="">
+<H3>블록 다이어그램</H3>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/b8125f37-c25e-460d-b19c-a6644fbf5e89">
