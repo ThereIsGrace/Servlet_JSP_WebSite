@@ -16,5 +16,7 @@ JSP와 Servlet을 이용해서 만든 과외 웹사이트입니다.
 </div>
 
 <H2>설계</H2>
+<H3>요구사항 명세서</H3>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/7fb31e93-d3c1-41ad-a70c-e4cef83b4707">
 
 
