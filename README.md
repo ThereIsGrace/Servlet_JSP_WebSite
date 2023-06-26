@@ -28,3 +28,15 @@ JSP와 Servlet을 이용해서 만든 과외 웹사이트입니다.
 <img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/334951d5-acb2-4669-8221-e546d6816ac5">
 <H3>블록 다이어그램</H3>
 <img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/b8125f37-c25e-460d-b19c-a6644fbf5e89">
+
+<H3>기능 설명</H3>
+<H4>회원가입</H4>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/634d39e5-b43c-4139-900a-f8f978efb65d">
+<H4>로그인</H4>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/16fb9464-aa9b-4303-82f9-22bcac8deef4">
+<H4>수강평 입력</H4>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/384f7360-0ae9-42ac-a0d0-c136d21ccc2b">
+<H4>강사 조회</H4>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/4299da99-c6f7-4004-b91f-1fcfaaa018c5">
+<H4>커뮤니티 게시판 입력</H4>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/779c08ea-2f3f-4e47-a8c7-4319c8d70ac4">
