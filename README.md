@@ -38,5 +38,7 @@ JSP와 Servlet을 이용해서 만든 과외 웹사이트입니다.
 <img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/384f7360-0ae9-42ac-a0d0-c136d21ccc2b">
 <H4>강사 조회</H4>
 <img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/4299da99-c6f7-4004-b91f-1fcfaaa018c5">
+<H4>달력 API</H4>
+<img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/e7dae9b1-331d-4ab5-9758-38bfece1618c">
 <H4>커뮤니티 게시판 입력</H4>
 <img src="https://github.com/ThereIsGrace/Servlet_JSP_WebSite/assets/109272327/779c08ea-2f3f-4e47-a8c7-4319c8d70ac4">
